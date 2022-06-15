@@ -1,11 +1,13 @@
-package by.tyav.soc.command;
+package by.tyav.soc.command.get;
+
+import by.tyav.soc.command.ICommand;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class HomePageCommand implements ICommand{
+public class UsersPageCommand implements ICommand {
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) {
-        return "HomePage";
+        return "UsersPage";
     }
 }

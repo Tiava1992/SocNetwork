@@ -1,7 +1,6 @@
 package by.tyav.soc.controller;
 
-import by.tyav.soc.command.ErrorPageCommand;
-import by.tyav.soc.command.HomePageCommand;
+import by.tyav.soc.command.CommandFactory;
 import by.tyav.soc.command.ICommand;
 
 import javax.servlet.ServletException;
@@ -28,13 +27,7 @@ public class FrontController extends HttpServlet {
     }
 
     private String handleRequest(HttpServletRequest req, HttpServletResponse resp){
-        String command=req.getParameter("command");
-        ICommand iCommand=null;
-        if("HOME_PAGE".equals(command)){
-            iCommand=new HomePageCommand();
-        } else {
-            iCommand=new ErrorPageCommand();
-        }
+        ICommand iCommand= CommandFactory.getCommand(req);
         return iCommand.execute(req, resp);
     }
 }
